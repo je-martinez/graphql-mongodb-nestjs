@@ -1,0 +1,39 @@
+## How to query all the users in the database
+
+//List users
+query{
+    users{              ## Name of the method that returns all users
+        name,           ## List the fields of the schema, that you want to see
+        email
+    }
+}
+
+## How to query a specific user base on a field
+
+//Get user by email
+query{
+  user(email:<param>){
+    name,               ## List the fields of the schema, that you want to see
+    email,
+    age
+  }
+}
+
+## How to insert a new record into the database
+
+mutation createUser($input: CreateUserInput!) {
+  createUser(input: $input) {
+    email
+    ages
+    name
+  }
+}
+
+On the query variables section asign the params to the input like this:
+{
+  "input": {
+    "email": "testing@mail.com",
+    "age": 30,
+    "name": "Testing Name"
+  }
+}
