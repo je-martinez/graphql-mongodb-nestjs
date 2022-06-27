@@ -24,7 +24,7 @@ query{
 mutation createUser($input: CreateUserInput!) {
   createUser(input: $input) {
     email
-    ages
+    age
     name
   }
 }
@@ -34,6 +34,25 @@ On the query variables section asign the params to the input like this:
   "input": {
     "email": "testing@mail.com",
     "age": 30,
+    "name": "Testing Name"
+  }
+}
+
+## How to update an existing record on the database
+
+mutation updateUser($input: CreateUserInput!) {
+    updateUser(input: $input) {
+      email
+      age
+      name
+  }
+}
+
+On the query variables section asign the params to the input like this:
+{
+  "input": {
+    "email": "testing@mail.com",
+    "age": 15,
     "name": "Testing Name"
   }
 }

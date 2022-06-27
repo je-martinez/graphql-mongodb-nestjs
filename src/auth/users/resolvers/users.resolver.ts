@@ -13,6 +13,11 @@ export class UsersResolver {
     return this.usersService.create(input);
   }
 
+  @Mutation(() => User)
+  async updateUser(@Args('input') input: CreateUserInput) {
+    return this.usersService.update(input);
+  }
+
   @Query(() => [User])
   async users() {
     return this.usersService.find();
