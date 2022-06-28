@@ -19,6 +19,7 @@ export class UsersService {
   async update(input: FilterQuery<User>) {
     const { email, name, age } = input || {};
     const entity = await this.userModel.findOne({ email: email });
+    if (!entity) return {};
     entity.email = email;
     entity.name = name;
     entity.age = age;
