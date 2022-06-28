@@ -40,7 +40,7 @@ On the query variables section asign the params to the input like this:
 
 ## How to update an existing record on the database
 
-mutation updateUser($input: CreateUserInput!) {
+mutation updateUser($input: UpdateUserInput!) {
     updateUser(input: $input) {
       email
       age

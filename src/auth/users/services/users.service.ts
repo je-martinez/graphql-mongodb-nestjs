@@ -17,8 +17,8 @@ export class UsersService {
   }
 
   async update(input: FilterQuery<User>) {
-    const { email, name, age } = input || {};
-    const entity = await this.userModel.findOne({ email: email });
+    const { email, name, age, _id } = input || {};
+    const entity = await this.userModel.findOne({ _id: _id });
     if (!entity) return {};
     entity.email = email;
     entity.name = name;
@@ -27,8 +27,8 @@ export class UsersService {
     return entity;
   }
 
-  async findOne(email: string): Promise<User> {
-    const searchQuery = { email };
+  async findOne(_id: string): Promise<User> {
+    const searchQuery = { _id };
     return this.userModel.findOne(searchQuery).lean();
   }
 

@@ -12,3 +12,9 @@ export class CreateUserInput {
   @Field()
   age: number;
 }
+
+@InputType()
+export class UpdateUserInput extends CreateUserInput {
+  @Field()
+  _id: string;
+}

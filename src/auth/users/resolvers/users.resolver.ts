@@ -1,7 +1,6 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { StringSchemaDefinition } from 'mongoose';
 import { UsersService } from '../services/users.service';
-import { CreateUserInput } from '../users.input';
+import { CreateUserInput, UpdateUserInput } from '../users.input';
 import { User } from '../users.schema';
 
 @Resolver(() => User)
@@ -14,7 +13,7 @@ export class UsersResolver {
   }
 
   @Mutation(() => User)
-  async updateUser(@Args('input') input: CreateUserInput) {
+  async updateUser(@Args('input') input: UpdateUserInput) {
     return this.usersService.update(input);
   }
 
@@ -24,9 +23,7 @@ export class UsersResolver {
   }
 
   @Query(() => User)
-  async user(
-    @Args('email', { type: () => String, nullable: false }) email: string,
-  ) {
-    return await this.usersService.findOne(email);
+  async user(@Args('id', { type: () => String, nullable: false }) id: string) {
+    return await this.usersService.findOne(id);
   }
 }
